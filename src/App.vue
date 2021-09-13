@@ -32,7 +32,7 @@ export default {
 
   computed: {
     fotosComFiltro() {
-      if (this.filtro) {
+      if (!this.filtro) {
         // Filtrar
         return this.fotos
       } else {
