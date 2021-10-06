@@ -1,18 +1,20 @@
-# project-vue
+# Project with options list,register images.
 
-> A Vue.js project
+> My first project using Vue JS 
 
-## Build Setup
+## Initial Steps
+
+Make sure to have docker installed in machine.
 
 ``` bash
-# install dependencies
-npm install
+# First step
+Do it clone of this one project
 
-# serve with hot reload at localhost:8080
-npm run dev
+# Two step
+After clone in project open in terminal do you wish
 
-# build for production with minification
-npm run build
+# Three step
+In the folder run command `docker-compose up -d` 
 ```
 
 For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
