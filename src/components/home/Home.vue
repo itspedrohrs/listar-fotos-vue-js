@@ -7,9 +7,9 @@
     <ul class="lista-fotos">
       <li v-for="foto of fotosComFiltro" class="lista-fotos-item">
 
-        <meu-painel :titulo="foto.titulo">
+        <my-panel :titulo="foto.titulo">
           <image-responsive :url="foto.url" :title="foto.titulo"></image-responsive>
-        </meu-painel>
+        </my-panel>
 
       </li>
     </ul>
@@ -23,7 +23,7 @@ import ImageResponsive from "../shared/image-responsive/ImageResponsive";
 export default {
 
   components: {
-    'meu-painel': Painel,
+    'my-panel': Painel,
     'image-responsive': ImageResponsive
   },
 
