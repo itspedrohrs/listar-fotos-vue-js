@@ -11,7 +11,12 @@
 <script>
 
 export default {
-  props: ['routes'],
+  props: {
+    routes:{
+      type: Array,
+      require:true
+    }
+  },
 }
 
 </script>
