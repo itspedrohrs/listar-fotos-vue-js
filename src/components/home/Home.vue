@@ -8,7 +8,8 @@
       <li v-for="foto of fotosComFiltro" class="lista-fotos-item">
 
         <my-panel :titulo="foto.titulo">
-          <image-responsive :url="foto.url" :title="foto.titulo"></image-responsive>
+          <image-responsive :url="foto.url" :title="foto.titulo"/>
+          <my-button type="button" label="Remover foto" @buttonActive="deleteImage(foto)"/>
         </my-panel>
 
       </li>
@@ -17,14 +18,17 @@
 </template>
 
 <script>
+
 import Painel from "../shared/painel/Painel";
 import ImageResponsive from "../shared/image-responsive/ImageResponsive";
+import Button from "../shared/button/Button";
 
 export default {
 
   components: {
     'my-panel': Painel,
-    'image-responsive': ImageResponsive
+    'image-responsive': ImageResponsive,
+    'my-button': Button
   },
 
   data() {
@@ -44,6 +48,12 @@ export default {
         let exp = new RegExp(this.filtro.trim(), 'i')
         return this.fotos.filter(foto => exp.test(foto.titulo))
       }
+    }
+  },
+
+  methods: {
+    deleteImage(image) {
+      alert('Removida foto: ' +image.titulo)
     }
   },
 
