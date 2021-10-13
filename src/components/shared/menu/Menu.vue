@@ -12,9 +12,9 @@
 
 export default {
   props: {
-    routes:{
+    routes: {
       type: Array,
-      require:true
+      require: true
     }
   },
 }

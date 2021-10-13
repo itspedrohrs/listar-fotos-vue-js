@@ -5,11 +5,20 @@
 <script>
 export default {
 
-  props: ['type', 'label'],
+  props: {
+    'type' : {},
+    'label' : {},
+    'confirmation': {
+      type: Boolean,
+    },
+    },
 
   methods:{
     action() {
-      (confirm('Confirmar exclusão ?')) ? this.$emit('buttonActive') : null
+      if(this.confirmation){
+        confirm('Confirmar exclusão ?')
+      }
+      return this.$emit('buttonActive')
     }
   }
 

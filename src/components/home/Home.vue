@@ -9,7 +9,7 @@
 
         <my-panel :titulo="foto.titulo">
           <image-responsive :url="foto.url" :title="foto.titulo"/>
-          <my-button type="button" label="Remover foto" @buttonActive="deleteImage(foto)"/>
+          <my-button type="button" label="Remover foto" :confirmation="false" @buttonActive="deleteImage(foto)"/>
         </my-panel>
 
       </li>
