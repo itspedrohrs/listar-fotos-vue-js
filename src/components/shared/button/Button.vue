@@ -34,10 +34,13 @@ export default {
 
   methods: {
     action() {
+      let actionReturn
       if (this.confirmation) {
-        confirm('Confirmar exclusão ?')
+        actionReturn = confirm('Confirmar exclusão ?') ? this.$emit('buttonActive') : null
+      } else {
+        actionReturn = this.$emit('buttonActive')
       }
-      return this.$emit('buttonActive')
+      return actionReturn
     }
   }
 
@@ -48,9 +51,10 @@ export default {
 .button {
   display: inline-block;
   padding: 10px;
-  border-radius: 3px;
+  border-radius: 5px;
   margin: 10px;
   font-size: 1.2em;
+  border-color: white;
 }
 
 .button-danger {
