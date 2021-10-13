@@ -48,9 +48,10 @@ export default {
 .button {
   display: inline-block;
   padding: 10px;
-  border-radius: 3px;
+  border-radius: 5px;
   margin: 10px;
   font-size: 1.2em;
+  border-color: white;
 }
 
 .button-danger {
