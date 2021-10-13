@@ -6,10 +6,18 @@
 export default {
 
   props: {
-    'type': {},
-    'label': {},
+    'type': {
+      type: String,
+      default: 'button',
+      require: true
+    },
+    'label': {
+      type: String,
+      require: true
+    },
     'confirmation': {
       type: Boolean,
+      default: false
     },
     'classButton': {
       type: String,
