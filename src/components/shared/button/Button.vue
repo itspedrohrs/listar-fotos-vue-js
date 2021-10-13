@@ -1,21 +1,32 @@
 <template>
-  <button @click="action()" class="button button-danger" :type="type">{{ label }}</button>
+  <button @click="action()" :class="styleButton" :type="type">{{ label }}</button>
 </template>
 
 <script>
 export default {
 
   props: {
-    'type' : {},
-    'label' : {},
+    'type': {},
+    'label': {},
     'confirmation': {
       type: Boolean,
     },
-    },
+    'classButton': {
+      type: String,
+      default: 'default',
+    }
+  },
 
-  methods:{
+  computed: {
+    styleButton() {
+      if (this.classButton === 'default') return 'button button-default'
+      if (this.classButton === 'danger') return 'button button-danger'
+    }
+  },
+
+  methods: {
     action() {
-      if(this.confirmation){
+      if (this.confirmation) {
         confirm('Confirmar exclusão ?')
       }
       return this.$emit('buttonActive')
