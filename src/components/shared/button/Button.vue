@@ -34,10 +34,13 @@ export default {
 
   methods: {
     action() {
+      let actionReturn
       if (this.confirmation) {
-        confirm('Confirmar exclusão ?')
+        actionReturn = confirm('Confirmar exclusão ?') ? this.$emit('buttonActive') : null
+      } else {
+        actionReturn = this.$emit('buttonActive')
       }
-      return this.$emit('buttonActive')
+      return actionReturn
     }
   }
 
