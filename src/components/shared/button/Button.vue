@@ -9,11 +9,11 @@ export default {
     'type': {
       type: String,
       default: 'button',
-      require: true
+      required: true
     },
     'label': {
       type: String,
-      require: true
+      required: true
     },
     'confirmation': {
       type: Boolean,
@@ -22,6 +22,7 @@ export default {
     'classButton': {
       type: String,
       default: 'default',
+      required: true,
     }
   },
 
