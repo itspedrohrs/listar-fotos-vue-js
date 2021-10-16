@@ -14,7 +14,7 @@ export default {
   props: {
     routes: {
       type: Array,
-      require: true
+      required: true
     }
   },
 }
