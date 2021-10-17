@@ -8,8 +8,8 @@
       <li v-for="foto of fotosComFiltro" class="lista-fotos-item">
 
         <my-panel :titulo="foto.titulo">
-          <image-responsive :url="foto.url" :title="foto.titulo"/>
-          <my-button type="button" label="Remover foto" :confirmation="true" classButton="" @buttonActive="deleteImage(foto)"/>
+          <image-responsive v-my-tranform :url="foto.url" :title="foto.titulo"/>
+          <my-button type="button" label="Remover foto" :confirmation="true" classButton="danger" @buttonActive="deleteImage(foto)"/>
         </my-panel>
 
       </li>
