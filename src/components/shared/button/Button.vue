@@ -28,7 +28,7 @@ export default {
 
   computed: {
     styleButton() {
-      if (this.classButton === 'default') return 'button button-default'
+      if (this.classButton === 'default' || this.classButton === '') return 'button button-default'
       if (this.classButton === 'danger') return 'button button-danger'
     }
   },

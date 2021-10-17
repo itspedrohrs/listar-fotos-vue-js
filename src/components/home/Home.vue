@@ -8,8 +8,11 @@
       <li v-for="foto of fotosComFiltro" class="lista-fotos-item">
 
         <my-panel :titulo="foto.titulo">
-          <image-responsive :url="foto.url" :title="foto.titulo"/>
-          <my-button type="button" label="Remover foto" :confirmation="true" classButton="" @buttonActive="deleteImage(foto)"/>
+          <image-responsive v-my-tranform="{typeAnimate: 'scale', rotation: 90, timeTransition: 3, animate: true}"
+                            :url="foto.url"
+                            :title="foto.titulo"/>
+          <my-button type="button" label="Remover foto" :confirmation="true" classButton="danger"
+                     @buttonActive="deleteImage(foto)"/>
         </my-panel>
 
       </li>
@@ -53,7 +56,7 @@ export default {
 
   methods: {
     deleteImage(image) {
-      alert('Removida foto: ' +image.titulo)
+      alert('Removida foto: ' + image.titulo)
     }
   },
 
