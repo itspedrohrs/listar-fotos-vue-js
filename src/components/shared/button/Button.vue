@@ -30,6 +30,7 @@ export default {
     styleButton() {
       if (this.classButton === 'default' || this.classButton === '') return 'button button-default'
       if (this.classButton === 'danger') return 'button button-danger'
+      if (this.classButton === 'come-back') return 'button button-come-back'
     }
   },
 
@@ -65,6 +66,11 @@ export default {
 
 .button-default {
   background: darkcyan;
+  color: white;
+}
+
+.button-come-back {
+  background: darkgray;
   color: white;
 }
 </style>
