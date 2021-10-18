@@ -1,6 +1,4 @@
-import Vue from "vue";
-
-Vue.directive('my-tranform', {
+export default {
 
     bind(el, binding, vnode) {
         let current = 0
@@ -26,12 +24,12 @@ Vue.directive('my-tranform', {
             let increment = 90
 
             if (binding.value) {
-                if(binding.value.typeAnimate === 'rotation' || binding.value.typeAnimate === ''){
+                if (binding.value.typeAnimate === 'rotation' || binding.value.typeAnimate === '') {
                     increment = binding.value.rotation
                     timeTransition = binding.value.timeTransition
                     current += increment
                     typeAnimate = `rotate(${current}deg)`
-                } else if (binding.value.typeAnimate === 'scale'){
+                } else if (binding.value.typeAnimate === 'scale') {
                     timeTransition = binding.value.timeTransition
                     current = '1.2'
                     typeAnimate = `scale(${current})`
@@ -39,8 +37,8 @@ Vue.directive('my-tranform', {
             }
 
             el.style.transform = typeAnimate
-            if(binding.value.animate) el.style.transition = `transform ${timeTransition}s`
+            if (binding.value.animate) el.style.transition = `transform ${timeTransition}s`
         })
     }
-
-})
+// })
+}

@@ -8,7 +8,7 @@
       <li v-for="foto of fotosComFiltro" class="lista-fotos-item">
 
         <my-panel :titulo="foto.titulo">
-          <image-responsive v-my-tranform="{typeAnimate: 'scale', rotation: 90, timeTransition: 3, animate: true}"
+          <image-responsive v-my-directive-RotationElement="{typeAnimate: 'scale', rotation: 90, timeTransition: 3, animate: true}"
                             :url="foto.url"
                             :title="foto.titulo"/>
           <my-button type="button" label="Remover foto" :confirmation="true" classButton="danger"
@@ -25,6 +25,7 @@
 import Painel from "../shared/painel/Painel";
 import ImageResponsive from "../shared/image-responsive/ImageResponsive";
 import Button from "../shared/button/Button";
+import RotationElement from "../../directives/RotationElement";
 
 export default {
 
@@ -32,6 +33,10 @@ export default {
     'my-panel': Painel,
     'image-responsive': ImageResponsive,
     'my-button': Button
+  },
+
+  directives: {
+    'my-directive-RotationElement': RotationElement
   },
 
   data() {
