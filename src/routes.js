@@ -1,4 +1,4 @@
-import RegisterImage from './components/form-registers/RegisterImage'
+import RegisterImage from './components/registration/Registration'
 import Home from './components/home/Home'
 
 export const routes = [
