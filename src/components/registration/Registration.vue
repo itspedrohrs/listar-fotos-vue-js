@@ -7,11 +7,10 @@
       <div class="controle">
         <label for="titulo">Título</label>
         <input
-          id="titulo"
+          id="title"
           autocomplete="off"
           placeholder="Informe um título para imagem"
-          @input="foto.title = $event.target.value"
-          :value="foto.title"
+          v-model="image.title"
         />
       </div>
 
@@ -21,10 +20,9 @@
           id="url"
           autocomplete="off"
           placeholder="Informe a url para imagem"
-          @input="foto.url = $event.target.value"
-          :value="foto.url"
+          v-model="image.url"
         />
-        <image-responsive url="" title="" />
+        <image-responsive :url="image.url" :title="image.title" />
       </div>
 
       <div class="controle">
@@ -32,8 +30,7 @@
         <textarea
           id="description"
           autocomplete="off"
-          @input="foto.description = $event.target.value"
-          :value="foto.description"
+          v-model="image.description"
         ></textarea>
       </div>
 
@@ -69,7 +66,7 @@ export default {
 
   data() {
     return {
-      foto: {
+      image: {
         title: "",
         url: "",
         descrition: "",
@@ -78,8 +75,8 @@ export default {
   },
   methods: {
     save() {
-      console.log('titulo foto:' + this.foto.title + ' url foto:' + this.foto.title + ' description foto:' + this.foto.descrition);
-      this.foto = {
+      console.log('titulo foto:' + this.image.title + ' url foto:' + this.image.title + ' description foto:' + this.image.descrition);
+      this.image = {
         title: '',
         url: '',
         descrition: ''
