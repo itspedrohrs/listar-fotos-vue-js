@@ -57,6 +57,7 @@
 <script>
 import ImageResponsive from "../shared/image-responsive/ImageResponsive";
 import Button from "../shared/button/Button";
+import Image from "../../domain/image/Image";
 
 export default {
   components: {
@@ -66,11 +67,7 @@ export default {
 
   data() {
     return {
-      image: {
-        title: "",
-        url: "",
-        descrition: "",
-      },
+      image: new Image(),
     };
   },
   methods: {
@@ -83,11 +80,7 @@ export default {
           " description foto:" +
           this.image.descrition
       );
-      this.image = {
-        title: "",
-        url: "",
-        descrition: "",
-      };
+      this.image = new Image()
     },
   },
 };
