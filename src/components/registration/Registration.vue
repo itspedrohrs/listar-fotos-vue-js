@@ -10,7 +10,7 @@
           id="title"
           autocomplete="off"
           placeholder="Informe um título para imagem"
-          v-model="image.title"
+          v-model.lazy="image.title"
         />
       </div>
 
@@ -20,9 +20,9 @@
           id="url"
           autocomplete="off"
           placeholder="Informe a url para imagem"
-          v-model="image.url"
+          v-model.lazy="image.url"
         />
-        <image-responsive :url="image.url" :title="image.title" />
+        <image-responsive v-show="image.url" :url="image.url" :title="image.title" />
       </div>
 
       <div class="controle">
@@ -75,12 +75,19 @@ export default {
   },
   methods: {
     save() {
-      console.log('titulo foto:' + this.image.title + ' url foto:' + this.image.title + ' description foto:' + this.image.descrition);
+      console.log(
+        "titulo foto:" +
+          this.image.title +
+          " url foto:" +
+          this.image.title +
+          " description foto:" +
+          this.image.descrition
+      );
       this.image = {
-        title: '',
-        url: '',
-        descrition: ''
-      }
+        title: "",
+        url: "",
+        descrition: "",
+      };
     },
   },
 };
