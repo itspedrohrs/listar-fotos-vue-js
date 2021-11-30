@@ -1,5 +1,5 @@
 <template>
-  <img class="imagem-responsiva" :src="url" :alt="title" :title="title"/>
+  <img class="imagem-responsiva" :src="url" :alt="title" :title="title" width="width"/>
 </template>
 
 <script>
@@ -12,6 +12,10 @@ export default {
     title: {
       type: String,
       required: true
+    },
+    width: {
+      required: false,
+      default: '100px'
     }
   }
 
