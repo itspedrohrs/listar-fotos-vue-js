@@ -5,14 +5,14 @@
     <input type="search" class="fitro" v-on:input="filtro = $event.target.value"
            placeholder="Pesquisa por uma palavra chave">
     <ul class="lista-fotos">
-      <li v-for="foto of fotosComFiltro" class="lista-fotos-item">
+      <li v-for="image of images" class="lista-fotos-item">
 
-        <my-panel :titulo="foto.titulo">
+        <my-panel :titulo="image.title">
           <image-responsive v-my-tranform="{typeAnimate: 'scale', rotation: 90, timeTransition: 3, animate: true}"
-                            :url="foto.url"
-                            :title="foto.titulo"/>
+                            :url="image.url"
+                            :title="image.title"/>
           <my-button type="button" label="Remover foto" :confirmation="true" classButton="danger"
-                     @buttonActive="deleteImage(foto)"/>
+                     @buttonActive="deleteImage(image)"/>
         </my-panel>
 
       </li>
@@ -37,7 +37,7 @@ export default {
   data() {
     return {
       titulo: 'Project Vue',
-      fotos: [],
+      images: [],
       filtro: ''
     }
   },
@@ -46,17 +46,17 @@ export default {
     fotosComFiltro() {
       if (!this.filtro) {
         // Filtrar
-        return this.fotos
+        return this.images
       } else {
         let exp = new RegExp(this.filtro.trim(), 'i')
-        return this.fotos.filter(foto => exp.test(foto.titulo))
+        return this.images.filter(foto => exp.test(foto.titulo))
       }
     }
   },
 
   methods: {
     deleteImage(image) {
-      alert('Removida foto: ' + image.titulo)
+      alert('Removida foto: ' + image.title)
     }
   },
 
@@ -64,7 +64,7 @@ export default {
 
     this.$http.get('http://localhost:3000/v1/fotos')
         .then(res => res.json())
-        .then(fotos => this.fotos = fotos, err => console.log(err)
+        .then(images => this.images = images, err => console.log(err)
         )
 
   }
@@ -73,6 +73,7 @@ export default {
 </script>
 
 <style>
+
 .centralizado {
   text-align: center;
 }
@@ -88,5 +89,7 @@ export default {
 .fitro {
   display: block;
   width: 100%;
+  border-radius: 5px;
 }
+
 </style>
