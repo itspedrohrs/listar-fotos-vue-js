@@ -3,8 +3,9 @@
     <h1 class="centralizado">{{ titulo }}</h1>
 
     <input type="search" class="fitro" v-on:input="filtro = $event.target.value"
-           placeholder="Pesquisa por uma palavra chave">
+           placeholder="Pesquisa por uma palavra chave" />
     <ul class="lista-fotos">
+      <p v-show="message" class="message-centralizado"></p>
       <li v-for="image of images" class="lista-fotos-item">
 
         <my-panel :titulo="image.title">
@@ -38,7 +39,8 @@ export default {
     return {
       titulo: 'Project Vue',
       images: [],
-      filtro: ''
+      filtro: '',
+      message : ''
     }
   },
 
@@ -56,7 +58,20 @@ export default {
 
   methods: {
     deleteImage(image) {
-      alert('Removida foto: ' + image.title)
+      // alert('Removida foto: ' + image.title)
+      this.$http.delete(`http://localhost:3000/v1/fotos/${image._id}`)
+        .then(response => {
+          {
+            let indice = this.images.indexOf(image)
+            this.images.splice(indice, 1)
+            this.message = 'Foto removida com sucesso!'
+
+          }
+          
+        })
+        .catch(error => {
+          this.message = 'Erro ao remover a foto!'
+        })
     }
   },
 
