@@ -6,6 +6,9 @@ import {routes} from "./routes";
 import './directives/RotationElement'
 
 Vue.use(VueResource)
+
+Vue.http.options.root = 'http://localhost:3000'
+
 Vue.use(VueRouter)
 
 const router = new VueRouter({

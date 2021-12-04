@@ -74,7 +74,7 @@ export default {
     save() {
 
       // console.log(`Title: ${this.image.title} Url: ${this.image.url} Description: ${this.image.description}`);
-      this.$http.post("http://localhost:3000/v1/fotos", this.image).then(() => {
+      this.$http.post("/v1/fotos", this.image).then(() => {
           this.$router.push("/")
           this.image = new Image()
         }).catch((err) => {

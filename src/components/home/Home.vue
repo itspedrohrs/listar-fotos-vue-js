@@ -59,7 +59,7 @@ export default {
   methods: {
     deleteImage(image) {
       // alert('Removida foto: ' + image.title)
-      this.$http.delete(`http://localhost:3000/v1/fotos/${image._id}`)
+      this.$http.delete(`/v1/fotos/${image._id}`)
         .then(response => {
           {
             let indice = this.images.indexOf(image)
@@ -77,11 +77,13 @@ export default {
 
   created() {
 
-    this.$http.get('http://localhost:3000/v1/fotos')
-        .then(res => res.json())
-        .then(images => this.images = images, err => console.log(err)
-        )
-
+    let resource = this.$resource('v1/fotos')
+    
+    resource
+      .query()
+      .then(res => res.json())
+      .then(images => this.images = images, err => console.log(err))
+      
   }
 
 };
