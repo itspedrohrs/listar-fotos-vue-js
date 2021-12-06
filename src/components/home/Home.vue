@@ -2,8 +2,7 @@
   <div>
     <h1 class="centralizado">{{ titulo }}</h1>
 
-    <input type="search" class="fitro" v-on:input="filtro = $event.target.value"
-           placeholder="Pesquisa por uma palavra chave" />
+    <input type="search" class="fitro" v-on:input="filtro = $event.target.value" placeholder="Pesquisa por uma palavra chave" />
     <ul class="lista-fotos">
       <p v-show="message" class="message-centralizado"></p>
       <li v-for="image of images" class="lista-fotos-item">
@@ -58,7 +57,6 @@ export default {
 
   methods: {
     deleteImage(image) {
-      // alert('Removida foto: ' + image.title)
       this.$http.delete(`/v1/fotos/${image._id}`)
         .then(response => {
           {
