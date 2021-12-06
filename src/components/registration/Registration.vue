@@ -22,7 +22,11 @@
           placeholder="Informe a url para imagem"
           v-model.lazy="image.url"
         />
-        <image-responsive v-show="image.url" :url="image.url" :title="image.title" />
+        <image-responsive
+          v-show="image.url"
+          :url="image.url"
+          :title="image.title"
+        />
       </div>
 
       <div class="controle">
@@ -72,15 +76,20 @@ export default {
   },
   methods: {
     save() {
-
-      // console.log(`Title: ${this.image.title} Url: ${this.image.url} Description: ${this.image.description}`);
-      this.$http.post("/v1/fotos", this.image).then(() => {
-          this.$router.push("/")
-          this.image = new Image()
-        }).catch((err) => {
-          console.log(err)
+      this.resource
+        .save(this.image)
+        .then(() => {
+          this.$router.push("/");
+          this.image = new Image();
+        })
+        .catch((err) => {
+          console.log(err);
         });
     },
+  },
+
+  created() {
+    this.resource = this.$resource("v1/fotos");
   },
 };
 </script>
