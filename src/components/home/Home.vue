@@ -8,8 +8,8 @@
       v-on:input="filtro = $event.target.value"
       placeholder="Pesquisa por uma palavra chave"
     />
+    <p v-show="message" class="message-centralizado">{{message}}</p>
     <ul class="lista-fotos">
-      <p v-show="message" class="message-centralizado"></p>
       <li v-for="image of imagesWithFilter" class="lista-fotos-item">
         <my-panel :titulo="image.title">
           <image-responsive
@@ -39,6 +39,7 @@
 import Painel from "../shared/painel/Painel";
 import ImageResponsive from "../shared/image-responsive/ImageResponsive";
 import Button from "../shared/button/Button";
+import FotoService from "../../domain/image/FotoService";
 
 export default {
   components: {
@@ -49,6 +50,7 @@ export default {
 
   data() {
     return {
+      message: false,
       firstTitle: "Project Vue",
       images: [],
       filtro: "",
@@ -69,33 +71,43 @@ export default {
 
   methods: {
     deleteImage(image) {
-      this.resource
-        .delete({
-          id: image._id,
-        })
-        .then((response) => {
-          {
-            let indice = this.images.indexOf(image);
-            this.images.splice(indice, 1);
-            this.message = "Foto removida com sucesso!";
+      this.service = new FotoService(this.$resource)
+      // this.resource
+      //   .delete({
+      //     id: image._id,
+      //   })
+          .delete(image)
+      .then(resp =>
+            {
+              console.log(this.resp);
+              let indice = this.images.indexOf(image);
+              this.images.splice(indice, 1);
+              this.message = "Foto removida com sucesso!";
+            }
+          , err => {
+            console.log('error')
+            this.message = "Erro ao tentar excluir a imagem!";
           }
-        })
-        .catch((error) => {
-          this.message = "Erro ao remover a foto!";
-        });
+      )
+        // .then(response => {
+        //   {
+        //     let indice = this.images.indexOf(image);
+        //     this.images.splice(indice, 1);
+        //     this.message = "Foto removida com sucesso!";
+        //   }
+        // })
+        // .catch((error) => {
+        //   this.message = "Erro ao remover a foto!";
+        // });
     },
   },
 
   created() {
-    this.resource = this.$resource("v1/fotos{/id}");
+    this.service = new FotoService(this.$resource)
 
-    this.resource
-      .query()
-      .then((res) => res.json())
-      .then(
-        (images) => (this.images = images),
-        (err) => console.log(err)
-      );
+    this.service
+      .list()
+      .then(images => this.images = images, (err) => console.log(err));
   },
 };
 </script>
