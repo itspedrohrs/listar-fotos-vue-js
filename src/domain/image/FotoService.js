@@ -10,7 +10,8 @@ export default class FotoService {
     }
 
     created(image) {
-
+        return this._resource
+            .save(image)
     }
 
     delete(image) {
