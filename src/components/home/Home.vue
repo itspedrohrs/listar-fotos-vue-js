@@ -10,7 +10,7 @@
     />
     <p v-show="message" class="message-centralizado">{{message}}</p>
     <ul class="lista-fotos">
-      <li v-for="image of imagesWithFilter" class="lista-fotos-item">
+      <li v-for="image of images" class="lista-fotos-item">
         <my-panel :titulo="image.title">
           <image-responsive
             v-my-tranform="{
