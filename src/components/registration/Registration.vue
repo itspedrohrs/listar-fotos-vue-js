@@ -45,13 +45,14 @@
           type="submit"
           classButton="default"
         />
-        <router-link to="/"
-          ><my-button
+        <router-link :to="{ name: 'home' }">
+          <my-button
             label="Voltar"
             title="Voltar"
             type="button"
             classButton="come-back"
-        /></router-link>
+        />
+        </router-link>
       </div>
     </form>
   </div>
