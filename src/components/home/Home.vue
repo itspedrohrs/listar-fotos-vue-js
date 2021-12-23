@@ -3,31 +3,31 @@
     <h1 class="centralizado">{{ firstTitle }}</h1>
 
     <input
-      type="search"
-      class="filtro"
-      v-on:input="filtro = $event.target.value"
-      placeholder="Pesquisa por uma palavra chave"
+        type="search"
+        class="filtro"
+        v-on:input="filtro = $event.target.value"
+        placeholder="Pesquisa por uma palavra chave"
     />
-    <p v-show="message" class="message-centralizado">{{message}}</p>
+    <p v-show="message" class="message-centralizado">{{ message }}</p>
     <ul class="lista-fotos">
       <li v-for="image of images" class="lista-fotos-item">
         <my-panel :titulo="image.title">
           <image-responsive
-            v-my-tranform="{
+              v-my-tranform="{
               typeAnimate: 'scale',
               rotation: 90,
               timeTransition: 3,
               animate: true,
             }"
-            :url="image.url"
-            :title="image.title"
+              :url="image.url"
+              :title="image.title"
           />
           <my-button
-            type="button"
-            label="Remover foto"
-            :confirmation="true"
-            classButton="danger"
-            @buttonActive="deleteImage(image)"
+              type="button"
+              label="Remover foto"
+              :confirmation="true"
+              classButton="danger"
+              @buttonActive="deleteImage(image)"
           />
         </my-panel>
       </li>
@@ -54,7 +54,6 @@ export default {
       firstTitle: "Project Vue",
       images: [],
       filtro: "",
-      message: "",
     };
   },
 
@@ -72,33 +71,16 @@ export default {
   methods: {
     deleteImage(image) {
       this.service = new FotoService(this.$resource)
-      // this.resource
-      //   .delete({
-      //     id: image._id,
-      //   })
           .delete(image)
-      .then(resp =>
-            {
-              console.log(this.resp);
-              let indice = this.images.indexOf(image);
-              this.images.splice(indice, 1);
-              this.message = "Foto removida com sucesso!";
-            }
-          , err => {
-            console.log('error')
-            this.message = "Erro ao tentar excluir a imagem!";
-          }
-      )
-        // .then(response => {
-        //   {
-        //     let indice = this.images.indexOf(image);
-        //     this.images.splice(indice, 1);
-        //     this.message = "Foto removida com sucesso!";
-        //   }
-        // })
-        // .catch((error) => {
-        //   this.message = "Erro ao remover a foto!";
-        // });
+          .then(resp => {
+                let indice = this.images.indexOf(image);
+                this.images.splice(indice, 1);
+                this.message = "Foto removida com sucesso!";
+              }
+              , error => {
+                this.message = "Não foi possível remover a foto!";
+              }
+          )
     },
   },
 
@@ -106,8 +88,8 @@ export default {
     this.service = new FotoService(this.$resource)
 
     this.service
-      .list()
-      .then(images => this.images = images, (err) => console.log(err));
+        .list()
+        .then(images => this.images = images, (err) => console.log(err));
   },
 };
 </script>
