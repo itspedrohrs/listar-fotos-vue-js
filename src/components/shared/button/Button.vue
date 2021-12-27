@@ -31,6 +31,7 @@ export default {
       if (this.classButton === 'default' || this.classButton === '') return 'button button-default'
       if (this.classButton === 'danger') return 'button button-danger'
       if (this.classButton === 'come-back') return 'button button-come-back'
+      if (this.classButton === 'updated') return 'button button-updated'
     }
   },
 
@@ -50,6 +51,7 @@ export default {
 </script>
 
 <style scoped>
+
 .button {
   display: inline-block;
   padding: 10px;
@@ -57,10 +59,16 @@ export default {
   margin: 10px;
   font-size: 1.2em;
   border-color: white;
+  cursor: pointer;
 }
 
 .button-danger {
   background: firebrick;
+  color: white;
+}
+
+.button-updated {
+  background: grey;
   color: white;
 }
 

@@ -25,10 +25,20 @@
           <my-button
               type="button"
               label="Remover foto"
+              title="Remover foto"
               :confirmation="true"
               classButton="danger"
               @buttonActive="deleteImage(image)"
           />
+          <router-link to="">
+            <my-button
+                type="button"
+                label="Alterar foto"
+                title="Alterar foto"
+                classButton="updated"
+                @buttonActive=""
+            />
+          </router-link>
         </my-panel>
       </li>
     </ul>
