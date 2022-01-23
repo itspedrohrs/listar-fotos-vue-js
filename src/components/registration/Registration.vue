@@ -1,7 +1,11 @@
 <template>
   <div>
     <h1 class="centralizado">Cadastro</h1>
-    <h2 class="centralizado"></h2>
+
+    <h2 class="centralizado">{{image.title}}</h2>
+
+    <h2 v-if="image._id" class="centralizado">Alterando</h2>
+    <h2 v-else class="centralizado">Incluindo</h2>
 
     <form id="form-registration-image" @submit.prevent="save()">
       <div class="controle">
@@ -63,6 +67,7 @@
 import ImageResponsive from "../shared/image-responsive/ImageResponsive";
 import Button from "../shared/button/Button";
 import Image from "../../domain/image/Image";
+import ImageService from "../../domain/image/ImageService";
 
 export default {
   components: {
@@ -73,14 +78,15 @@ export default {
   data() {
     return {
       image: new Image(),
+      id: this.$route.params.id,
     };
   },
   methods: {
     save() {
-      this.resource
-        .save(this.image)
+      this.service
+        .created(this.image)
         .then(() => {
-          this.$router.push("/");
+          (this.id) ? this.$router.push({name: 'home'}) : ''
           this.image = new Image();
         })
         .catch((err) => {
@@ -90,8 +96,15 @@ export default {
   },
 
   created() {
-    this.resource = this.$resource("v1/fotos");
-  },
+    this.service = new ImageService(this.$resource)
+
+    if (this.id) {
+      this.service
+      .searchImageUpdated(this.id)
+      .then(image => this.image = image)
+    }
+  }
+
 };
 </script>
 
