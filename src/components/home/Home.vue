@@ -21,16 +21,9 @@
             }"
               :url="image.url"
               :title="image.title"
+              :classStyle="`imagem-responsiva-card`"
           />
-          <my-button
-              type="button"
-              label="Remover foto"
-              title="Remover foto"
-              :confirmation="true"
-              classButton="danger"
-              @buttonActive="deleteImage(image)"
-          />
-          <router-link to="">
+          <router-link :to="{name : 'updated_image', params: {id : image._id} }">
             <my-button
                 type="button"
                 label="Alterar foto"
@@ -39,6 +32,14 @@
                 @buttonActive=""
             />
           </router-link>
+          <my-button
+              type="button"
+              label="Remover foto"
+              title="Remover foto"
+              :confirmation="true"
+              classButton="danger"
+              @buttonActive="deleteImage(image)"
+          />
         </my-panel>
       </li>
     </ul>
@@ -49,7 +50,7 @@
 import Painel from "../shared/painel/Painel";
 import ImageResponsive from "../shared/image-responsive/ImageResponsive";
 import Button from "../shared/button/Button";
-import FotoService from "../../domain/image/FotoService";
+import ImageService from "../../domain/image/ImageService";
 
 export default {
   components: {
@@ -80,7 +81,7 @@ export default {
 
   methods: {
     deleteImage(image) {
-      this.service = new FotoService(this.$resource)
+      this.service = new ImageService(this.$resource)
           .delete(image)
           .then(resp => {
                 let indice = this.images.indexOf(image);
@@ -95,7 +96,7 @@ export default {
   },
 
   created() {
-    this.service = new FotoService(this.$resource)
+    this.service = new ImageService(this.$resource)
 
     this.service
         .list()

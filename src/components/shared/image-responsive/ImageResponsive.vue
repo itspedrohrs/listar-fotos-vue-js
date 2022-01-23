@@ -1,5 +1,5 @@
 <template>
-  <img class="imagem-responsiva" :src="url" :alt="title" :title="title" width="width"/>
+  <img :class="classStyle" :src="url" :alt="title" :title="title"/>
 </template>
 
 <script>
@@ -13,6 +13,9 @@ export default {
       type: String,
       required: true
     },
+    classStyle : {
+      type: String,
+    },
     width: {
       required: false,
       default: '100px'
@@ -23,7 +26,16 @@ export default {
 </script>
 
 <style scoped>
+
+.imagem-responsiva-card {
+  height: 125px;
+  width: 95%;
+}
+
 .imagem-responsiva {
-  width: 100%;
+  display: block;
+  margin-top: 20px;
+  margin-right: auto;
+  margin-left: auto;
 }
 </style>
