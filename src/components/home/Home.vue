@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1 class="centralizado">{{ firstTitle }}</h1>
+    <p v-show="message" class="message-centralizado">{{ message }}</p>
 
     <input
         type="search"
@@ -8,7 +9,7 @@
         v-on:input="filtro = $event.target.value"
         placeholder="Pesquisa por uma palavra chave"
     />
-    <p v-show="message" class="message-centralizado">{{ message }}</p>
+
     <ul class="lista-fotos">
       <li v-for="image of images" class="lista-fotos-item">
         <my-panel :titulo="image.title">
@@ -100,12 +101,20 @@ export default {
 
     this.service
         .list()
-        .then(images => this.images = images, (err) => console.log(err));
+        .then(images => this.images = images, error => {
+          this.message = error.message;
+        });
   },
 };
 </script>
 
 <style>
+
+.message-centralizado {
+  text-align: center;
+  font-weight: bold;
+}
+
 .centralizado {
   text-align: center;
 }
