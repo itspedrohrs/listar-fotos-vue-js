@@ -6,12 +6,12 @@
     <input
         type="search"
         class="filtro"
-        v-on:input="filtro = $event.target.value"
+        v-on:input="filterSearch = $event.target.value"
         placeholder="Pesquisa por uma palavra chave"
     />
 
     <ul class="lista-fotos">
-      <li v-for="image of images" class="lista-fotos-item">
+      <li v-for="image of imagesWithFilter" class="lista-fotos-item">
         <my-panel :titulo="image.title">
           <image-responsive
               v-my-tranform="{
@@ -65,17 +65,20 @@ export default {
       message: false,
       firstTitle: "Project Vue",
       images: [],
-      filtro: "",
+      filterSearch: "",
     };
   },
 
   computed: {
+      /**
+       * List image with filter or not filter
+       */
     imagesWithFilter() {
-      if (!this.filtro) {
+      if (!this.filterSearch) {
         return this.images;
       } else {
-        let exp = new RegExp(this.filtro.trim(), "i");
-        return this.images.filter((foto) => exp.test(foto.title));
+        let exp = new RegExp(this.filterSearch.trim(), "i");
+        return this.images.filter((image) => exp.test(image.title));
       }
     },
   },
@@ -84,12 +87,12 @@ export default {
     deleteImage(image) {
       this.service = new ImageService(this.$resource)
           .delete(image)
-          .then(resp => {
+          .then(() => {
                 let indice = this.images.indexOf(image);
                 this.images.splice(indice, 1);
                 this.message = "Foto removida com sucesso!";
               }
-              , error => {
+              ,() => {
                 this.message = "Não foi possível remover a foto!";
               }
           )
