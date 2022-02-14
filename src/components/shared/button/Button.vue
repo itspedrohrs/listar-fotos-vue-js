@@ -1,5 +1,5 @@
 <template>
-  <button @click="action()" :class="styleButton" :type="type">{{ label }}</button>
+  <button @click="action()" :class="classButton" :type="type">{{ label }}</button>
 </template>
 
 <script>
@@ -27,12 +27,6 @@ export default {
   },
 
   computed: {
-    styleButton() {
-      if (this.classButton === 'default' || this.classButton === '') return 'button button-default'
-      if (this.classButton === 'danger') return 'button button-danger'
-      if (this.classButton === 'come-back') return 'button button-come-back'
-      if (this.classButton === 'updated') return 'button button-updated'
-    }
   },
 
   methods: {
@@ -52,33 +46,16 @@ export default {
 
 <style scoped>
 
-.button {
+.btn-actions-image {
   display: inline-block;
-  padding: 10px;
   border-radius: 5px;
-  margin: 10px;
-  font-size: 1.2em;
+  margin: 5px 0 5px 0;
   border-color: white;
   cursor: pointer;
 }
 
-.button-danger {
-  background: firebrick;
-  color: white;
+.btn-actions-register{
+  margin: 5px 5px;
 }
 
-.button-updated {
-  background: grey;
-  color: white;
-}
-
-.button-default {
-  background: darkcyan;
-  color: white;
-}
-
-.button-come-back {
-  background: darkgray;
-  color: white;
-}
 </style>
