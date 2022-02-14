@@ -10,7 +10,7 @@
     <ValidationObserver ref="observerFormImage" v-slot="{ invalid }">
       <form id="form-registration-image" @submit.prevent="save()">
         <div class="controle">
-          <label for="titulo">Título</label>
+          <label for="title">Título</label>
           <ValidationProvider rules="required|caracter_max_min:10,30" v-slot="{errors}">
             <input
                 class="form-input"
@@ -45,7 +45,7 @@
         </div>
 
         <div class="controle">
-          <label for="descricao">Descrição</label>
+          <label for="description">Descrição</label>
           <textarea
               class="text-area-form"
               id="description"
@@ -59,14 +59,14 @@
               label="Salvar"
               title="Salvar"
               type="submit"
-              classButton="default"
+              classButton="btn btn-primary btn-actions-register"
           />
           <router-link :to="{ name: 'home' }">
             <my-button
                 label="Voltar"
                 title="Voltar"
                 type="button"
-                classButton="come-back"
+                classButton="btn btn-secondary btn-actions-register"
             />
           </router-link>
         </div>

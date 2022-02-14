@@ -29,7 +29,7 @@
                 type="button"
                 label="Alterar foto"
                 title="Alterar foto"
-                classButton="updated"
+                classButton="btn-actions-image btn btn-secondary"
                 @buttonActive=""
             />
           </router-link>
@@ -38,7 +38,7 @@
               label="Remover foto"
               title="Remover foto"
               :confirmation="true"
-              classButton="danger"
+              classButton="btn-actions-image btn btn-danger "
               @buttonActive="deleteImage(image)"
           />
         </my-panel>

@@ -1,6 +1,6 @@
 <template>
   <div class="painel">
-    <h2 class="painel-titulo" @click="visivel = !visivel">{{ titulo }}</h2>
+    <h5 class="painel-titulo" @click="visivel = !visivel">{{ titulo }}</h5>
     <transition name="painel-fade">
       <div class="paine-conteudo" v-show="visivel">
         <slot></slot>
@@ -44,7 +44,7 @@ export default {
   background: lightblue;
   margin: 0 0 15px 0;
   padding: 10px;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 * {
