@@ -7,6 +7,8 @@ import './directives/RotationElement'
 import {ValidationObserver,ValidationProvider, extend} from 'vee-validate'
 import {required} from "vee-validate/dist/rules";
 
+import 'bootstrap/dist/css/bootstrap.css'
+
 Vue.use(VueResource)
 
 Vue.http.options.root = 'http://localhost:3000'
