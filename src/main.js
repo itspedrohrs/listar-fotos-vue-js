@@ -7,7 +7,6 @@ import './directives/RotationElement'
 import {ValidationObserver,ValidationProvider, extend} from 'vee-validate'
 import {required} from "vee-validate/dist/rules";
 
-import 'bootstrap/dist/css/bootstrap.css'
 import './assets/styles/style.css'
 
 Vue.use(VueResource)
